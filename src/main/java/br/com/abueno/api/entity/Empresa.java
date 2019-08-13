@@ -27,7 +27,7 @@ public class Empresa implements Serializable {
 	private String cnpj;
 	private Date dataCriaçao;
 	private Date dataAtulizao;
-	private List<Funcionarios> funcionarios;
+	private List<Funcionario> funcionarios;
 	
 	
 	
@@ -88,12 +88,12 @@ public class Empresa implements Serializable {
 	}
 
 	@OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public List<Funcionarios> getFuncionarios() {
+	public List<Funcionario> getFuncionarios() {
 		return funcionarios;
 	}
 
 
-	public void setFuncionarios(List<Funcionarios> funcionarios) {
+	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
 	

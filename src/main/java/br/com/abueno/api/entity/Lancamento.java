@@ -21,8 +21,8 @@ import javax.persistence.TemporalType;
 import br.com.abueno.api.enums.TipoEnum;
 
 @Entity
-@Table(name = "lancamentos")
-public class Lacamentos implements Serializable {
+@Table(name = "lancamento") 
+public class Lancamento implements Serializable {
 
 	private static final long serialVersionUID = -5558336472182290075L;
 
@@ -33,11 +33,13 @@ public class Lacamentos implements Serializable {
 	private Date dataCricacao;
 	private Date dataAutalizacao;
 	private TipoEnum tipo;
-	private Funcionarios funcionarios;
+	private Funcionario funcionario;
 
-	public Lacamentos() {
+	public Lancamento() {
 
 	}
+	
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -106,12 +108,12 @@ public class Lacamentos implements Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	public Funcionarios getFuncionarios() {
-		return funcionarios;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-	public void setFuncionarios(Funcionarios funcionarios) {
-		this.funcionarios = funcionarios;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 	@PrePersist
@@ -126,11 +128,13 @@ public class Lacamentos implements Serializable {
 		dataAutalizacao = new Date();
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Lacamentos [id=" + id + ", data=" + data + ", descricao=" + descricao + ", localizacao=" + localizacao
+		return "Lancamento [id=" + id + ", data=" + data + ", descricao=" + descricao + ", localizacao=" + localizacao
 				+ ", dataCricacao=" + dataCricacao + ", dataAutalizacao=" + dataAutalizacao + ", tipo=" + tipo
-				+ ", funcionarios=" + funcionarios + "]";
-	}
+				+ ", funcionario=" + funcionario + "]";
+	} 
 
 }

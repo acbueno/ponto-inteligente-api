@@ -27,8 +27,8 @@ import org.hibernate.annotations.ManyToAny;
 import br.com.abueno.api.enums.PerfilEnum;
 
 @Entity
-@Table(name = "funcionarios")
-public class Funcionarios implements Serializable {
+@Table(name = "funcionario") 
+public class Funcionario implements Serializable {
 
 	private static final long serialVersionUID = -2488776706538112656L;
 
@@ -44,9 +44,9 @@ public class Funcionarios implements Serializable {
 	private Date dataCriacao;
 	private Date DataAtualizacao;
 	private Empresa empresa;
-	private List<Lacamentos> lacamentos;
+	private List<Lancamento> lancamento;
 
-	public Funcionarios() {
+	public Funcionario() {
 
 	}
 
@@ -175,19 +175,19 @@ public class Funcionarios implements Serializable {
 		this.empresa = empresa;
 	}
 
-	@OneToMany(mappedBy = "funcionarios", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public List<Lacamentos> getLacamentos() {
-		return lacamentos;
+	@OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public List<Lancamento> getLancamento() {
+		return lancamento;
 	}
 
-	public void setLacamentos(List<Lacamentos> lacamentos) {
-		this.lacamentos = lacamentos;
+	public void setLancamento(List<Lancamento> lancamento) {
+		this.lancamento = lancamento;
 	}
 
 	@PrePersist
 	public void prePresist() {
 		dataCriacao = new Date();
-	}
+	} 
 
 	@PreUpdate
 	public void preUpdate() {
@@ -201,7 +201,7 @@ public class Funcionarios implements Serializable {
 		return "Funcionarios [id=" + id + ", name=" + name + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
 				+ ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia + ", qtdHorasAlmoco="
 				+ qtdHorasAlmoco + ", perfilEnum=" + perfilEnum + ", dataCriacao=" + dataCriacao + ", DataAtualizacao="
-				+ DataAtualizacao + ", empresa=" + empresa + ", lacamentos=" + lacamentos + "]";
+				+ DataAtualizacao + ", empresa=" + empresa + ", lancamento=" + lancamento + "]";
 	}
 
 }
