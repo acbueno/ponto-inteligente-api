@@ -42,7 +42,7 @@ public class Lancamento implements Serializable {
 	
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -70,10 +70,11 @@ public class Lancamento implements Serializable {
 		this.descricao = descricao;
 	}
 
-	@Column(name = "localizcao", nullable = true)
+	@Column(name = "localizacao", nullable = true)
 	public String getLocalizacao() {
 		return localizacao;
 	}
+	
 
 	public void setLocalizacao(String localizacao) {
 		this.localizacao = localizacao;

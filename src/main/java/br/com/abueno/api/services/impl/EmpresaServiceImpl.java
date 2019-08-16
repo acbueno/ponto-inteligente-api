@@ -25,7 +25,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	@Override
 	public Empresa persistir(Empresa empresa) {
 		// TODO Auto-generated method stub
-		return this.persistir(empresa);
+		return this.empresaRepository.save(empresa);
 	}
 
 }

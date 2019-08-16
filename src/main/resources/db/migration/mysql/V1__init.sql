@@ -1,13 +1,14 @@
 CREATE TABLE `empresa` (
 `id` bigint(20) NOT NULL,
 `cnpj` varchar(255) NOT NULL,
-`data_atualizaçao` datetime NOT NULL,
+`data_atualizacao` datetime NOT NULL,
 `data_criacao` datetime NOT NULL,
 `razao_social` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `funcionario` (
 `id` bigint(20) NOT NULL,
+`nome` varchar(255) NOT NULL,
 `cpf` varchar(255) NOT NULL,
 `data_atualizacao` datetime NOT NULL,
 `data_criacao` datetime NOT NULL,
@@ -46,8 +47,10 @@ ADD KEY FK46i4K7VL8wah7feutye9kbpi4 (FUNCIONARIO_ID);
 ALTER TABLE `empresa`
 MODIFY ID BIGINT(20) NOT NULL AUTO_INCREMENT; 
 
-
 ALTER TABLE  `lancamento`
+MODIFY ID BIGINT(20) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE  `funcionario`
 MODIFY ID BIGINT(20) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE FUNCIONARIO

@@ -33,7 +33,7 @@ public class Funcionario implements Serializable {
 	private static final long serialVersionUID = -2488776706538112656L;
 
 	private Long id;
-	private String name;
+	private String nome;
 	private String email;
 	private String senha;
 	private String cpf;
@@ -51,7 +51,7 @@ public class Funcionario implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -60,13 +60,13 @@ public class Funcionario implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", nullable = false)
-	public String getName() {
-		return name;
+	@Column(name = "nome", nullable = false)
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	@Column(name = "email", nullable = false)
@@ -95,7 +95,8 @@ public class Funcionario implements Serializable {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	
+	
 	@Column(name = "valor_hora", nullable = true)
 	public BigDecimal getValorHora() {
 		return valorHora;
@@ -110,7 +111,7 @@ public class Funcionario implements Serializable {
 		return Optional.ofNullable(valorHora);
 	}
 
-	@Column(name = "qtd_horas_trabalhadas_dia", nullable = true)
+	@Column(name = "qtd_horas_trabalho_dia", nullable = true)
 	public Float getQtdHorasTrabalhoDia() {
 		return qtdHorasTrabalhoDia;
 	}
@@ -184,13 +185,13 @@ public class Funcionario implements Serializable {
 		this.lancamento = lancamento;
 	}
 
-	@PrePersist
-	public void prePresist() {
+	@PreUpdate
+	public void prePreUpdate() {
 		dataCriacao = new Date();
 	} 
 
-	@PreUpdate
-	public void preUpdate() {
+	@PrePersist
+	public void prePersist() {
 		final Date atual = new Date();
 		dataCriacao = atual;
 		DataAtualizacao = atual;
@@ -198,7 +199,7 @@ public class Funcionario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Funcionarios [id=" + id + ", name=" + name + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
+		return "Funcionarios [id=" + id + ", name=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
 				+ ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia + ", qtdHorasAlmoco="
 				+ qtdHorasAlmoco + ", perfilEnum=" + perfilEnum + ", dataCriacao=" + dataCriacao + ", DataAtualizacao="
 				+ DataAtualizacao + ", empresa=" + empresa + ", lancamento=" + lancamento + "]";
